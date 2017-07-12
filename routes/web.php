@@ -10,14 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post/{id}/update', 'HomeController@update');
+Route::get('/roles-permissions', 'HomeController@rolesPermissions');*/
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'painel'], function () {
+    //PostController
+
+    //PermissionController
+
+    //RolesController    
+
+    //PainelController
+    Route::get('/', 'Painel\PainelController@index');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/post/{id}/update', 'HomeController@update');
-Route::get('/roles-permissions', 'HomeController@rolesPermissions');
+Route::get('/', 'SiteController@index');
